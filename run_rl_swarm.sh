@@ -220,7 +220,7 @@ if [ -n "$ORG_ID" ]; then
         --modal_org_id "$ORG_ID" \
         --contract_address "$SWARM_CONTRACT" \
         --config "$CONFIG_PATH" \
-        --game "$GAME"
+        --game "$GAME" 2>&1 | tee /rl-swarm/train.log
 else
     python -m hivemind_exp.gsm8k.train_single_gpu \
         --hf_token "$HUGGINGFACE_ACCESS_TOKEN" \
@@ -229,5 +229,5 @@ else
         --initial_peers "$PEER_MULTI_ADDRS" \
         --host_maddr "$HOST_MULTI_ADDRS" \
         --config "$CONFIG_PATH" \
-        --game "$GAME"
+        --game "$GAME" 2>&1 | tee /rl-swarm/train.log
 fi
